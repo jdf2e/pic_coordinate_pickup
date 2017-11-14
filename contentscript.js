@@ -23,9 +23,9 @@
         var target = event.target;
         mouseX = event.pageX;
         mouseY = event.pageY;
-        event.preventDefault();
-
+        
         if(target.tagName.toLowerCase() == 'img'){
+            event.preventDefault();
             target.style.cursor = 'crosshair';
             pickup_vertical_line.style.opacity = 1;
             pickup_horizontal_line.style.opacity = 1;
