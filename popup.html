@@ -8,22 +8,22 @@
         margin: 10px;
         white-space: nowrap;
       }
-
-      h1 {
-        font-size: 15px;
+      h2{
+        font-size: 14px;
+        margin: 0;
+      }
+      p{
+        margin: 0 0 10px 0;
+      }
+      a{
+        text-decoration: none;
       }
     </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
-    <script src="popup.js"></script>
   </head>
 
   <body>
-    <button id="btnOpen">开启</button>
+    <h2>使用方法：</h2>
+    <p>按住 Ctrl（Command） 键，在图片上拖拽即可得到相对于当前图片左上角的坐标信息</p>
+    <a href="https://github.com/jdf2e/pic_coordinate_pickup" target="_blank">关于图片坐标拾取插件</a>
   </body>
 </html>

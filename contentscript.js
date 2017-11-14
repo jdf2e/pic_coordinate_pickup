@@ -12,8 +12,6 @@
     pickup_horizontal_line.className = 'pickup_horizontal_line';
     document.body.appendChild(pickup_horizontal_line);
 
-    var mouseX = 0;
-    var mouseY = 0;
     var isMouseDown = false;
     var index = 0;
     var relativeX = 0;
@@ -21,10 +19,10 @@
 
     document.addEventListener('mousemove', event => {
         var target = event.target;
-        mouseX = event.pageX;
-        mouseY = event.pageY;
+        var mouseX = event.pageX;
+        var mouseY = event.pageY;
         
-        if(target.tagName.toLowerCase() == 'img'){
+        if(target.tagName.toLowerCase() == 'img' && event.metaKey || event.ctrlKey){
             event.preventDefault();
             target.style.cursor = 'crosshair';
             pickup_vertical_line.style.opacity = 1;
@@ -54,7 +52,7 @@
 
     document.addEventListener('mousedown', event => {
         var target = event.target;
-        if(target.tagName.toLowerCase() == 'img'){
+        if(target.tagName.toLowerCase() == 'img' && event.metaKey || event.ctrlKey){
             index = index + 1;
             relativeX = getElementLeft(target);
             relativeY = getElementTop(target);
