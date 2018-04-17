@@ -29,13 +29,13 @@
             pickup_horizontal_line.style.opacity = 1;
 
             if(isMouseDown){
-                let pickup_react = document.querySelector('#pickup_react' + index);
-                let width = mouseX - parseInt(pickup_react.style.left);
-                let height = mouseY - parseInt(pickup_react.style.top);
-                pickup_react.style.width = width + 'px';
-                pickup_react.style.height = height + 'px';
+                let pickup_rect = document.querySelector('#pickup_rect' + index);
+                let width = mouseX - parseInt(pickup_rect.style.left);
+                let height = mouseY - parseInt(pickup_rect.style.top);
+                pickup_rect.style.width = width + 'px';
+                pickup_rect.style.height = height + 'px';
 
-                let coordinate2 = pickup_react.querySelector('.coordinate2');
+                let coordinate2 = pickup_rect.querySelector('.coordinate2');
                 coordinate2.innerHTML = `(${mouseX - relativeX}, ${mouseY - relativeY})`;
             }
         }else{
@@ -57,11 +57,11 @@
             relativeX = getElementLeft(target);
             relativeY = getElementTop(target);
 
-            let pickup_react = document.createElement('div');
-            pickup_react.className = 'pickup_react';
-            pickup_react.id = 'pickup_react' + index;
-            pickup_react.style.left = event.pageX + 'px';
-            pickup_react.style.top = event.pageY + 'px';
+            let pickup_rect = document.createElement('div');
+            pickup_rect.className = 'pickup_rect';
+            pickup_rect.id = 'pickup_rect' + index;
+            pickup_rect.style.left = event.pageX + 'px';
+            pickup_rect.style.top = event.pageY + 'px';
 
             let coordinate1 = document.createElement('div');
             coordinate1.className = 'coordinate1';
@@ -70,21 +70,23 @@
             let coordinate2 = document.createElement('div');
             coordinate2.className = 'coordinate2';
 
-            pickup_react.appendChild(coordinate1);
-            pickup_react.appendChild(coordinate2);
-            document.body.appendChild(pickup_react);
+            pickup_rect.appendChild(coordinate1);
+            pickup_rect.appendChild(coordinate2);
+            document.body.appendChild(pickup_rect);
             isMouseDown = true;
         }
     });
 
     document.addEventListener('mouseup', () => {
-        var pickup_react = document.querySelector('#pickup_react' + index);
-        var width = parseInt(pickup_react.style.width);
-        var height = parseInt(pickup_react.style.height);
-        if(width < 50 && height < 50){
-            document.body.removeChild(pickup_react);
+        var pickup_rect = document.querySelector('#pickup_rect' + index);
+        if(pickup_rect){
+            var width = parseInt(pickup_rect.style.width);
+            var height = parseInt(pickup_rect.style.height);
+            if(width < 50 && height < 50){
+                document.body.removeChild(pickup_rect);
+            }
+            isMouseDown = false;
         }
-        isMouseDown = false;
     });
 
     function getElementLeft(element){
